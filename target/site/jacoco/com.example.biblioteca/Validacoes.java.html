@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Validacoes.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">biblioteca</a> &gt; <a href="index.source.html" class="el_package">com.example.biblioteca</a> &gt; <span class="el_source">Validacoes.java</span></div><h1>Validacoes.java</h1><pre class="source lang-java linenums">
+package com.example.biblioteca;
+
+<span class="nc" id="L4">public class Validacoes {</span>
+    public static boolean emailValido(String email) {
+<span class="fc bfc" id="L6" title="All 2 branches covered.">        return email != null &amp;&amp;</span>
+<span class="fc bfc" id="L7" title="All 2 branches covered.">        email.contains(&quot;@&quot;) &amp;&amp;</span>
+<span class="fc bfc" id="L8" title="All 2 branches covered.">        email.matches(&quot;^[^@\\s]+@[^@\\s]+\\.[^@\\s\\.]{2,}$&quot;) &amp;&amp;</span>
+<span class="pc bpc" id="L9" title="1 of 2 branches missed.">        !email.contains(&quot;..&quot;) &amp;&amp;</span>
+<span class="pc bpc" id="L10" title="1 of 2 branches missed.">        email.indexOf('@') == email.lastIndexOf('@') &amp;&amp;</span>
+<span class="pc bpc" id="L11" title="1 of 2 branches missed.">        !email.startsWith(&quot;.&quot;) &amp;&amp;</span>
+<span class="pc bpc" id="L12" title="1 of 2 branches missed.">        !email.startsWith(&quot;@&quot;) &amp;&amp;</span>
+<span class="pc bpc" id="L13" title="1 of 2 branches missed.">        !email.endsWith(&quot;.&quot;) &amp;&amp;</span>
+<span class="pc bpc" id="L14" title="1 of 2 branches missed.">        !email.endsWith(&quot;@&quot;);</span>
+    }
+
+    public static boolean senhaForte(String senha) {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (senha == null) return false;</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        return senha.length() &gt;= 8 &amp;&amp;</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">               senha.chars().anyMatch(Character::isUpperCase) &amp;&amp;</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">               senha.chars().anyMatch(Character::isLowerCase) &amp;&amp;</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">               senha.chars().anyMatch(Character::isDigit);</span>
+    }
+
+    public static boolean nomeValido(String nome) {
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        return nome != null &amp;&amp;</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        !nome.trim().isEmpty() &amp;&amp;</span>
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        nome.trim().length() &gt;= 2 &amp;&amp;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        nome.matches(&quot;^[A-Za-zÀ-ÿ ]+$&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
