@@ -13,6 +13,40 @@ public class CadastroTest {
     }
 
     @Test
+    void testCadastrarUsuarioDuplicado() {
+        Usuario u1 = Cadastro.cadastrarUsuario("Joana", "joana@empresa.com", "Senha123");
+        Usuario u2 = Cadastro.cadastrarUsuario("Joana", "joana@empresa.com", "Senha123");
+        assertNotNull(u1);
+        assertNull(u2); // Usuário já cadastrado
+    }
+
+    @Test
+    void testAtualizarUsuarioNaoExistente() {
+        Usuario u = new Usuario("Fake", "fake@user.com", "Senha123");
+        assertFalse(Cadastro.atualizarUsuario(u, "Novo", "novo@user.com", "Nova123"));
+    }
+
+    @Test
+    void testAlterarParcialEmail() {
+        Usuario u = Cadastro.cadastrarUsuario("Roberta", "roberta@teste.com", "Senha123");
+        assertTrue(Cadastro.alterarParcial(u, "email", "roberta@nova.com"));
+        assertEquals("roberta@nova.com", u.getEmail());
+    }
+
+    @Test
+    void testAlterarParcialSenha() {
+        Usuario u = Cadastro.cadastrarUsuario("Marcelo", "marcelo@teste.com", "Senha123");
+        assertTrue(Cadastro.alterarParcial(u, "senha", "NovaSenha456"));
+        assertEquals("NovaSenha456", u.getSenha());
+    }
+
+    @Test
+    void testAlterarParcialUsuarioNaoExistente() {
+        Usuario u = new Usuario("Fantasma", "ghost@invalido.com", "Senha123");
+        assertFalse(Cadastro.alterarParcial(u, "nome", "NovoNome"));
+    }
+
+    @Test
     void testAtualizarUsuarioValido(){
         Usuario u = Cadastro.cadastrarUsuario("André", "andre@ex.com", "Senha123");
         assertTrue(Cadastro.atualizarUsuario(u, "André Silva", "andre@ex.com", "NovaSenha123"));

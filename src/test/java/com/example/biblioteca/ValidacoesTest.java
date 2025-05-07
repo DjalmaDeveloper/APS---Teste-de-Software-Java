@@ -13,6 +13,10 @@ public class ValidacoesTest {
         assertFalse(Validacoes.emailValido(""));
         assertFalse(Validacoes.emailValido("teste.ex.com"));
         assertFalse(Validacoes.emailValido("teste@@ex.com"));
+        assertFalse(Validacoes.emailValido("teste..email@ex.com"));
+        assertFalse(Validacoes.emailValido(".inicio@ex.com"));
+        assertFalse(Validacoes.emailValido("fim@"));
+        assertFalse(Validacoes.emailValido("a@b@c.com"));
     }
 
     @Test
@@ -24,6 +28,7 @@ public class ValidacoesTest {
         assertFalse(Validacoes.senhaForte("ABC12345"));
         assertFalse(Validacoes.senhaForte("Abcdefgh"));
         assertFalse(Validacoes.senhaForte("ABCDEFGH"));
+        assertFalse(Validacoes.senhaForte("12345678"));
     }
 
     @Test
@@ -34,5 +39,6 @@ public class ValidacoesTest {
         assertFalse(Validacoes.nomeValido(""));
         assertFalse(Validacoes.nomeValido("   "));
         assertFalse(Validacoes.nomeValido("João@Silva"));
+        assertFalse(Validacoes.nomeValido("A"));
     }
 }
