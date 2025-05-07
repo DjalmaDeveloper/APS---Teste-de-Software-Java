@@ -31,5 +31,5 @@ No terminal, na raiz do projeto:
 
 ```bash
 mvn test
-
-DjalmaDeveloper • Projeto acadêmico com foco em testes de software
+````
+* DjalmaDeveloper - Projeto acadêmico com foco em testes de software
